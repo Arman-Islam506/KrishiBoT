@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>KrishiBoT – Supply Chain</title>
+  <link rel="stylesheet" href="supply_chain.css" />
+</head>
+<body class="sc-page">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="brand-box">
+      <img src="assets/botlogo.png" alt="KrishiBoT logo" class="brand-logo">
+      <div>
+        <div class="brand-text-main">AI Farming Assistant – KrishiBoT</div>
+        <div class="brand-text-sub">Supply chain planning</div>
+      </div>
+    </div>
+
+    <div class="top-right">
+      <a href="marketplace.html" class="nav-link">Marketplace</a>
+      <a href="supply_chain.html" class="nav-link active-link">Supply Chain</a>
+      <a href="settings.html" class="nav-link">Settings</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+      <img id="navProfileImg" src="assets/farmer.png" class="profile-circle" alt="Farmer">
+    </div>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="sc-layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sc-sidebar">
+      <button class="btn-pill" onclick="window.location.href='chat.html'">← Back to Chat</button>
+
+      <div class="side-card">
+        <div class="side-title">Quick Crops</div>
+        <div class="quick-list" id="quickCrops">
+          <button class="quick-item" data-crop="Rice">🌾 Rice</button>
+          <button class="quick-item" data-crop="Potato">🥔 Potato</button>
+          <button class="quick-item" data-crop="Tomato">🍅 Tomato</button>
+          <button class="quick-item" data-crop="Onion">🧅 Onion</button>
+          <button class="quick-item" data-crop="Chili">🌶 Chili</button>
+          <button class="quick-item" data-crop="Eggplant">🍆 Eggplant</button>
+        </div>
+      </div>
+
+      <div class="side-card">
+  <div class="side-title">Quick Locations</div>
+  <div class="quick-list" id="quickLocations">
+    <button class="quick-item" data-loc="Dhaka">📍 Dhaka</button>
+    <button class="quick-item" data-loc="Chittagong">📍 Chittagong</button>
+    <button class="quick-item" data-loc="Rajshahi">📍 Rajshahi</button>
+    <button class="quick-item" data-loc="Khulna">📍 Khulna</button>
+    <button class="quick-item" data-loc="Barisal">📍 Barisal</button>
+    <button class="quick-item" data-loc="Sylhet">📍 Sylhet</button>
+    <button class="quick-item" data-loc="Rangpur">📍 Rangpur</button>
+  </div>
+</div>
+
+
+      <div class="side-card">
+        <div class="side-title">Module Info</div>
+        <p class="side-text">
+          This module helps farmers plan <b>harvest → sorting → packaging → transport → buyer</b>
+          so they can reduce damage and maximize profit.
+        </p>
+        <p class="side-text small">
+          (Prototype rule-set now. Later: dataset + live market + route/transport pricing.)
+        </p>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="sc-main">
+
+      <!-- INPUT CARD -->
+      <section class="card">
+        <div class="card-title">Supply Chain Planner</div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>Crop Name</label>
+            <input type="text" id="cropName" placeholder="e.g., Rice" />
+          </div>
+
+          <div class="field">
+            <label>Location (District)</label>
+            <input type="text" id="location" placeholder="e.g., Bogura" />
+          </div>
+
+          <div class="field">
+            <label>Season</label>
+            <select id="season">
+              <option value="Kharif-1">Kharif-1</option>
+              <option value="Kharif-2">Kharif-2</option>
+              <option value="Rabi">Rabi</option>
+              <option value="Pre-Kharif">Pre-Kharif</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Estimated Quantity</label>
+            <div class="inline">
+              <input type="number" id="quantity" min="1" placeholder="e.g., 1200" />
+              <select id="unit">
+                <option value="kg">kg</option>
+                <option value="mon">mon</option>
+                <option value="ton">ton</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Harvest Date</label>
+            <input type="date" id="harvestDate" />
+          </div>
+
+          <div class="field">
+            <label>Storage Available?</label>
+            <select id="storage">
+              <option value="none">No (sell fast)</option>
+              <option value="basic">Basic (1–7 days)</option>
+              <option value="cold">Cold storage (7–30 days)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Packaging</label>
+            <select id="packaging">
+              <option value="loose">Loose / Open</option>
+              <option value="sack">Sack / Bag</option>
+              <option value="crate">Plastic Crate</option>
+              <option value="box">Carton Box</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Target Buyer</label>
+            <select id="buyer">
+              <option value="local_market">Local market</option>
+              <option value="wholesaler">Wholesaler / Arat</option>
+              <option value="processor">Processor / Mill</option>
+              <option value="retail_chain">Retail chain</option>
+              <option value="exporter">Exporter (future)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" id="planBtn">Generate Supply Plan</button>
+          <button class="btn-outline" id="resetBtn">Reset</button>
+        </div>
+      </section>
+
+      <!-- KPI CARDS -->
+      <section class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-label">Recommended Dispatch</div>
+          <div class="kpi-value" id="kpiDispatch">—</div>
+          <div class="kpi-sub">when to send to market</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Risk Level</div>
+          <div class="kpi-value" id="kpiRisk">—</div>
+          <div class="kpi-sub">damage / delay / price drop</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Estimated Logistics Cost</div>
+          <div class="kpi-value" id="kpiCost">—</div>
+          <div class="kpi-sub">transport + packaging</div>
+        </div>
+      </section>
+
+      <!-- OUTPUT -->
+      <section class="card">
+        <div class="card-title">AI Supply Chain Suggestions</div>
+
+        <div class="meta" id="metaLine">
+          📍 Location: <span id="metaLoc">—</span> &nbsp; | &nbsp;
+          🌱 Crop: <span id="metaCrop">—</span> &nbsp; | &nbsp;
+          🗓 Season: <span id="metaSeason">—</span>
+        </div>
+
+        <div class="plan-grid">
+          <div class="plan-box">
+            <div class="plan-title">Step-by-step Plan</div>
+            <ol class="plan-list" id="stepPlan">
+              <li>Enter crop details to generate plan.</li>
+            </ol>
+          </div>
+
+          <div class="plan-box">
+            <div class="plan-title">Cost Breakdown (Demo)</div>
+            <div class="cost-lines" id="costBox">
+              <div class="cost-line"><span>Packaging</span><b>—</b></div>
+              <div class="cost-line"><span>Transport</span><b>—</b></div>
+              <div class="cost-line"><span>Handling</span><b>—</b></div>
+              <div class="cost-total"><span>Total</span><b>—</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alerts">
+          <div class="alert-title">Risk Alerts</div>
+          <ul class="alert-list" id="alertsList">
+            <li>No alerts yet.</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          ✅ This is a <b>prototype</b> plan based on simple rules.  
+          Next upgrade: connect to dataset + real transport rates + market signals + supply chain optimization.
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="supply_chain.js?v=3"></script>
+  <!--script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KrishiBoT – Admin Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="brand-box">
+            <img src="assets/botlogo.png" alt="KrishiBoT logo" class="brand-logo">
+            <div>
+                <div class="brand-text-main">KrishiBoT – Admin Access</div>
+                <div class="brand-text-sub">Manage crops, users & system data</div>
+            </div>
+        </div>
+
+        <div class="top-right">
+            <a href="index.html" class="nav-link">Back to Farmer login</a>
+        </div>
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class="page-center">
+        <div class="auth-card" style="max-width:420px;">
+
+            <!-- This section is shown ONLY if no admin is created yet -->
+            <div id="adminSetupSection">
+                <div class="auth-title">Create Admin Account</div>
+                <div class="auth-subtitle">
+                    First time setup – define a unique Admin ID and password.
+                </div>
+
+                <label class="auth-label">Admin Name</label>
+                <input type="text" id="adminNameSetup" class="auth-input" placeholder="e.g. System Admin">
+
+                <label class="auth-label">Admin ID</label>
+                <input type="text" id="adminIdSetup" class="auth-input" placeholder="e.g. admin001">
+
+                <label class="auth-label">Password</label>
+                <input type="password" id="adminPassSetup" class="auth-input" placeholder="********">
+
+                <button class="auth-btn" id="createAdminBtn">
+                    Save & Go to Admin Panel
+                </button>
+
+                <div class="auth-small-text">
+                    This information will be stored in this browser only (for prototype demo).
+                </div>
+            </div>
+
+            <!-- This section is shown once admin account exists -->
+            <div id="adminLoginSection" style="display:none;">
+                <div class="auth-title">Admin Login</div>
+                <div class="auth-subtitle">
+                    Enter your Admin ID and password to access the dashboard.
+                </div>
+
+                <label class="auth-label">Admin ID</label>
+                <input type="text" id="adminIdLogin" class="auth-input" placeholder="Your Admin ID">
+
+                <label class="auth-label">Password</label>
+                <input type="password" id="adminPassLogin" class="auth-input" placeholder="********">
+
+                <button class="auth-btn" id="adminLoginBtn">
+                    Login to Admin Panel
+                </button>
+
+                <div class="auth-small-text">
+                    Forgot your admin credentials? Clear browser storage to reset (demo only).
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
