@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KrishiBoT – Farmer Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="profile-page-body">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="brand-box">
+            <img src="assets/botlogo.png" alt="KrishiBoT logo" class="brand-logo">
+            <div>
+                <div class="brand-text-main">AI Farming Assistant – KrishiBoT</div>
+                <div class="brand-text-sub">Edit Farmer Profile</div>
+            </div>
+        </div>
+
+        <div class="top-right">
+            <a href="chat.html" class="nav-link">Chat</a>
+            <img src="assets/farmer.png" class="profile-circle" alt="User">
+        </div>
+    </div>
+
+    <!-- PROFILE CARD -->
+    <div class="profile-wrapper">
+
+        <div class="profile-title">Farmer Profile</div>
+        <div class="profile-subtitle">
+            Update your farming information. Login details (mobile, password) cannot be changed here.
+        </div>
+
+        <!-- PHOTO PREVIEW ONLY (still updatable if you like) -->
+        <div class="profile-photo-upload">
+            <img src="assets/farmer.png" alt="Profile photo" class="profile-photo-large">
+
+            <div class="profile-photo-text">
+                <div class="profile-photo-title">Profile Photo</div>
+
+                <input type="file" id="profilePhotoInput" accept="image/*" style="display:none;">
+                <label for="profilePhotoInput" class="btn-outline upload-btn">Upload New Photo</label>
+
+                <p class="upload-hint">
+                    Changing this photo will only affect your profile picture, not login details.
+                </p>
+            </div>
+        </div>
+
+        <!-- FARM INFO ONLY -->
+        <div class="profile-section-title">Farming Information</div>
+
+        <div class="profile-form-grid">
+
+            <div>
+                <label class="profile-label">Full Name</label>
+                <input type="text" id="fullName" class="profile-input">
+            </div>
+
+            <div>
+                <label class="profile-label">Age</label>
+                <input type="number" id="age" class="profile-input">
+            </div>
+
+            <div>
+                <label class="profile-label">Location</label>
+                <input type="text" id="location" class="profile-input">
+            </div>
+
+            <div>
+                <label class="profile-label">Land Area (Bigha / Acre)</label>
+                <input type="text" id="landArea" class="profile-input">
+            </div>
+
+            <div>
+                <label class="profile-label">Soil Type</label>
+                <select id="soilType" class="profile-select">
+                    <option>Loamy</option>
+                    <option>Clay</option>
+                    <option>Sandy</option>
+                    <option>Sandy Loam</option>
+                    <option>Don't Know</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="profile-label">Irrigation Type</label>
+                <select id="irrigationType" class="profile-select">
+                    <option>Tube well</option>
+                    <option>Canal</option>
+                    <option>Rain-fed</option>
+                    <option>Mixed</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="profile-label">Preferred Language</label>
+                <div class="profile-language-row">
+                    <label><input type="checkbox" id="langBangla"> Bangla</label>
+                    <label><input type="checkbox" id="langEnglish"> English</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn-outline" onclick="window.location.href='chat.html'">
+                Cancel
+            </button>
+            <button class="btn-primary" id="profileSaveBtn">
+                Save
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

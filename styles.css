@@ -1,0 +1,911 @@
+/* =========================================================
+   1. GLOBAL RESET + BASE STYLES
+   ========================================================= */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base body styling used for all pages */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #edf6ee;     /* light green background */
+    color: #1b1b1b;
+}
+
+/* =========================================================
+   2. TOP BAR (LOGO + TITLE + RIGHT SIDE LINKS)
+   Used on: login, chat, settings, profile, admin
+   ========================================================= */
+.top-bar{
+    width: 100%;
+    padding: 16px 40px;
+    background: #1f7a34;     /* dark green */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-box{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-logo{
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.brand-text-main{
+    font-weight: bold;
+    font-size: 18px;
+}
+.brand-text-sub{
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Right side (Chat / Settings / Profile image) */
+.top-right{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-link{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.nav-link:hover{
+    text-decoration: underline;
+}
+
+/* small profile circle in top-right */
+.profile-circle{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffffff33;
+    object-fit: cover;
+}
+
+/* =========================================================
+   3. LOGIN PAGE (Farmer login card)
+   File: index.html
+   ========================================================= */
+.page-center{
+    min-height: calc(100vh - 64px); /* below top bar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 16px;
+}
+
+.auth-card{
+    background: #ffffff;
+    width: 360px;
+    padding: 24px 24px 28px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+}
+
+.auth-title{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.auth-subtitle{
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.auth-label{
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.auth-input{
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #c9d5c9;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.auth-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.checkbox-inline{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Login and Create buttons */
+.auth-btn{
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 6px;
+    border: none;
+    background: #1f7a34;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+.auth-btn.secondary{
+    background: #fff;
+    color: #1f7a34;
+    border: 1px solid #1f7a34;
+}
+.auth-btn:hover{
+    opacity: .92;
+}
+
+.auth-small-text{
+    font-size: 11px;
+    color: #777;
+    margin-top: 8px;
+}
+
+/* =========================================================
+   4. CHAT PAGE LAYOUT
+   File: chat.html
+   ========================================================= */
+
+/* Root for chat pages */
+.chat-page{
+    background:#edf6ee;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* Main layout below the top bar: sidebar + main chat */
+.chat-layout{
+    display:flex;
+    height:calc(100vh - 72px); /* 72px ≈ top-bar height */
+}
+
+/* ---------- LEFT SIDEBAR (New Chat, Suggested Qs, History) ---------- */
+.chat-sidebar{
+    width:260px;
+    background:#f5faf6;
+    border-right:1px solid #d0e0d3;
+    padding:14px 12px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.sidebar-header{
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+/* "New Chat" button */
+.new-chat-btn{
+    width:100%;
+    padding:8px 10px;
+    border-radius:20px;
+    border:none;
+    background:#1f7a34;
+    color:#fff;
+    font-size:13px;
+    cursor:pointer;
+    margin-bottom:4px;
+}
+.new-chat-btn:hover{
+    background:#19642a;
+}
+
+/* Section title text (Suggested Questions / History) */
+.sidebar-section-title{
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+.sidebar-section{
+    font-size:12px;
+}
+
+/* Suggested questions list */
+#suggestList{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+/* Each suggested question looks like a small button */
+.suggest-item{
+    width:100%;
+    text-align:left;
+    border:none;
+    background:#f7faf7;
+    border-radius:8px;
+    padding:8px 10px;
+    font-size:12px;
+    cursor:pointer;
+}
+.suggest-item:hover{
+    background:#e3f2e5;
+}
+
+/* Chat history list (previous conversations) */
+.history-list{
+    max-height:180px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+/* Single history item */
+.history-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:12px;
+    padding:6px 8px;
+    border-radius:6px;
+    background:#f8f8f8;
+    cursor:pointer;
+}
+.history-item:hover{
+    background:#e9f2ea;
+}
+
+/* Title text of conversation in history */
+.history-title{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:140px;
+}
+
+/* Delete (✕) button that appears on hover */
+.history-delete{
+    border:none;
+    background:transparent;
+    font-size:12px;
+    cursor:pointer;
+    opacity:0;
+    margin-left:6px;
+}
+.history-item:hover .history-delete{
+    opacity:1;
+}
+
+/* ---------- MAIN CHAT AREA ---------- */
+.chat-main{
+    flex:1;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    background:#f5faf6;
+}
+
+/* Scrollable message list */
+.chat-wrapper{
+    flex:1;
+    padding:18px 40px 80px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+/* Centered empty state (shown when no messages yet) */
+.chat-empty{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    opacity:0.45;
+    pointer-events:none;
+    text-align:center;
+}
+.chat-empty-icon{
+    font-size:40px;
+}
+.chat-empty-text{
+    font-size:14px;
+}
+
+/* Chat bubbles created by JS --------------------------------- */
+.user-bubble{
+    align-self:flex-end;
+    background:#1f7a34;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:18px;
+    margin:2px 0;
+    max-width:70%;
+    font-size:13px;
+}
+.bot-bubble{
+    align-self:flex-start;
+    background:#ffffff;
+    color:#222;
+    padding:10px 14px;
+    border-radius:18px;
+    margin:2px 0;
+    max-width:70%;
+    font-size:13px;
+    box-shadow:0 0 4px rgba(0,0,0,0.08);
+}
+
+/* ---------- INPUT BAR AT BOTTOM ---------- */
+.chat-input-bar{
+    border-top:1px solid #d0e0d3;
+    padding:8px 18px 10px;
+    background:#1f7a34;
+}
+
+.chat-input-inner{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#ffffff;
+    border-radius:24px;
+    padding:9px 12px;
+}
+
+/* Textarea for user message */
+.chat-input-inner textarea{
+    flex:1;
+    border:none;
+    resize:none;
+    font-size:15px;              /* Bigger text */
+    font-family: Arial, Helvetica, sans-serif;   /* Same as chat bubbles */
+    color:#333;                  /* Cleaner dark color */
+    outline:none;
+    background:transparent;
+}
+
+/* Icon buttons: menu, scroll, mic, send */
+.chat-icon-btn{
+    border:none;
+    background:transparent;
+    font-size:18px;
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+}
+.chat-icon-btn:hover{
+    opacity:0.8;
+}
+
+/* =========================================================
+   5. SETTINGS PAGE
+   File: settings.html
+   Left menu + right content
+   ========================================================= */
+
+/* 2-column layout: sidebar + content */
+.settings-layout{
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: calc(100vh - 64px);
+}
+
+/* Left menu panel */
+.settings-menu{
+    background: #f7faf8;
+    padding: 20px 16px;
+    border-right: 1px solid #d7e3d7;
+}
+
+.settings-menu-title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* One menu item (System, Chatbot, Interface, etc.) */
+.settings-menu-item{
+    padding: 8px 10px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.settings-menu-item.active,
+.settings-menu-item:hover{
+    background: #1f7a34;
+    color: #fff;
+}
+
+/* Logout button in left menu */
+.logout-btn{
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+    background: #c62828;      /* red color */
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+.logout-btn:hover{
+    background: #b71c1c;
+}
+
+/* Right content area */
+.settings-content{
+    padding: 24px 30px;
+    background: #ffffff;
+    width: 100%;          /* fill entire right column */
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* Section title text (e.g., “System Preferences”) */
+.settings-section-title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Generic row in settings (label + input) */
+.settings-row{
+    margin-bottom: 14px;
+    font-size: 13px;
+}
+
+/* Selects and inputs inside the basic settings rows */
+.settings-row select,
+.settings-row input{
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #c9d5c9;
+    width: 260px;
+}
+
+/* =========================================================
+   5.1 SETTINGS PANEL IMPROVEMENTS
+   (Applies only to panels with class .settings-panel)
+   ========================================================= */
+
+/* Each row inside a panel (adds spacing + separators) */
+.settings-panel .settings-row {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6eee6;
+}
+.settings-panel .settings-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Labels above controls inside panels */
+.settings-panel label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+/* Consistent width for text inputs/selects inside panels */
+.settings-panel select,
+.settings-panel input[type="text"],
+.settings-panel input[type="number"] {
+    width: 260px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #c9d5c9;
+    font-size: 14px;
+}
+
+/* Larger checkboxes in settings */
+.settings-panel input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.15);
+}
+
+/* Optional description text under a checkbox */
+.settings-panel .desc {
+    font-size: 11px;
+    color: #666;
+    margin-left: 28px;  /* indent after checkbox */
+    margin-top: 4px;
+    max-width: 420px;
+}
+
+/* For rows that need two columns (left label + right text) */
+.settings-row-2col {
+    display: grid;
+    grid-template-columns: 180px auto;
+    align-items: center;
+}
+
+/* Right side text inside 2-col layout */
+.settings-panel .right-text {
+    padding-left: 6px;
+    font-size: 13px;
+}
+
+/* Extra spacing per specific sections */
+#settings-chatbot .settings-row,
+#settings-interface .settings-row,
+#settings-privacy .settings-row {
+    margin-bottom: 24px;
+}
+
+/* =========================================================
+   5.2 APP & DATA (special spacing for its buttons)
+   ========================================================= */
+#settings-appdata .settings-row {
+    margin-bottom: 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6eee6;
+}
+#settings-appdata .settings-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Space below each button in App & Data */
+#settings-appdata button {
+    margin-bottom: 6px;
+}
+
+/* =========================================================
+   6. PROFILE PAGE (Farmer Profile)
+   File: profile.html & register.html (same layout)
+   ========================================================= */
+.profile-page-body{
+    background: #edf6ee;
+    min-height: 100vh;
+}
+
+/* Card wrapper for profile form */
+.profile-wrapper{
+    max-width: 700px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 24px 26px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.profile-title{
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+.profile-subtitle{
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+/* Large photo + upload button row */
+.profile-photo-upload{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Big circle farmer photo in profile */
+.profile-photo-large{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1f7a34;
+    flex-shrink: 0;
+}
+
+.profile-photo-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-photo-title{
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* "Upload photo" button in profile page */
+.upload-btn{
+    display: inline-block;
+    margin-top: 2px;
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+.upload-hint{
+    font-size: 11px;
+    color: #666;
+    margin-top: 6px;
+    max-width: 260px;
+    line-height: 1.4;
+}
+
+/* Profile form field grid (2 columns on wide screens) */
+.profile-form-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 14px 24px;
+}
+
+.profile-label{
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.profile-input,
+.profile-select{
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #c9d5c9;
+}
+
+/* Bangla / English language checkboxes row */
+.profile-language-row{
+    display: flex;
+    gap: 10px;
+}
+
+/* Save / Cancel buttons row */
+.profile-actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+/* Outlined button (Cancel, etc.) */
+.btn-outline{
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #1f7a34;
+    background: #fff;
+    color: #1f7a34;
+}
+
+/* Filled green primary button (Save) */
+.btn-primary{
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #1f7a34;
+    color: #fff;
+    border: none;
+}
+
+/* =========================================================
+   7. ADMIN DASHBOARD STYLES
+   File: admin.html
+   ========================================================= */
+.admin-body{
+    background: #edf6ee;
+    min-height: 100vh;
+}
+
+.admin-wrapper{
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px 20px;
+}
+
+/* Top metric cards (total users, chats, etc.) */
+.admin-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.admin-card{
+    background: #ffffff;
+    padding: 14px 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.admin-card-title{
+    font-size: 12px;
+    color: #666;
+}
+.admin-card-value{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+/* Table area (recent users / chats) */
+.admin-table-card{
+    background: #ffffff;
+    padding: 14px 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.admin-two-col{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+}
+
+.admin-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 12px;
+}
+.admin-table th,
+.admin-table td{
+    padding: 6px 4px;
+    border-bottom: 1px solid #e3ece3;
+}
+
+/* =========================================================
+   8. RESPONSIVE BEHAVIOUR
+   Make chat + settings pages work on small screens
+   ========================================================= */
+@media(max-width: 800px){
+
+    /* Chat: stack sidebar on top of main area */
+    .chat-layout{
+        flex-direction:column;
+    }
+    .chat-sidebar{
+        width:100%;
+    }
+
+    /* Settings: make it single column (menu on top, content below) */
+    .settings-layout{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   FIX: TOPBAR RIGHT NAV (Marketplace / Supply Chain)
+   ========================================================= */
+
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.topbar-right .nav-group{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.topbar-right .nav-divider{
+    width:1px;
+    height:22px;
+    background: rgba(255,255,255,0.35);
+}
+
+.topbar-right .nav-link{
+    color:#ffffff;
+    text-decoration:none;
+    font-size:14px;
+    padding:6px 10px;
+    border-radius:8px;
+    transition: background 0.15s ease;
+}
+
+.topbar-right .nav-link:hover{
+    background: rgba(255,255,255,0.15);
+    text-decoration:none;
+}
+
+.topbar-right .nav-link.active{
+    background: rgba(255,255,255,0.25);
+    font-weight:600;
+}
+
+.topbar-right .profile-circle{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  cursor:pointer;
+  background: rgba(255,255,255,0.22); /* optional */
+}
+
+
+/* ===== FIX: TOP BAR RIGHT ITEMS SIDE-BY-SIDE ===== */
+.top-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+/* left brand takes remaining space */
+.brand-box{
+  flex: 1;
+  min-width: 0;
+}
+
+/* right menu stays one line */
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap: nowrap;        /* IMPORTANT: prevents stacking */
+  white-space: nowrap;      /* IMPORTANT: prevents line break */
+  flex-shrink: 0;           /* IMPORTANT: prevents squeezing */
+}
+
+/* links should behave like inline blocks */
+.topbar-right .nav-link{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:8px;
+  text-decoration:none;
+}
+
+/* optional hover look */
+.topbar-right .nav-link:hover{
+  background: rgba(255,255,255,0.15);
+  text-decoration:none;
+}
+
+.profile-circle img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+}
+
+/* Center marketplace content nicely */
+.marketplace-main{
+  flex: 1;
+  background: #edf6ee;
+  padding: 30px 20px;
+}
+
+/* This is the key fix */
+.marketplace-center{
+  max-width: 720px;          /* controls width */
+  margin-left: auto;         /* push away from left */
+  margin-right: auto;        /* center horizontally */
+}
+
+/* Optional: slight right shift (remove if you want exact center) */
+.marketplace-center{
+  transform: translateX(40px);
+}
+
+/* Improve readability */
+.marketplace-center h1{
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+.marketplace-center p{
+  font-size: 14px;
+  margin-bottom: 14px;
+  color: #333;
+}

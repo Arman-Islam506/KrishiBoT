@@ -1,0 +1,294 @@
+/* =========================================================
+   KrishiBoT – Supply Chain (separate CSS)
+   Matches your green UI style
+   ========================================================= */
+
+/* Basic reset */
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background:#edf6ee;
+  color:#1b1b1b;
+}
+
+/* Reuse your existing top-bar class style feel */
+.top-bar{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 24px;
+  background: #1f7a34;
+  color: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+}
+
+.brand-box{ min-width: 0; display:flex; align-items:center; gap:12px; }
+.brand-logo{ width:45px; height:45px; border-radius:12px; object-fit:cover; }
+.brand-text-main{ font-weight:bold; font-size:18px; }
+.brand-text-sub{ font-size:12px; opacity:.9; }
+
+.top-right{ flex: 0 0 auto; display:flex; align-items:center; gap:18px; }
+.nav-link{ color:#fff; text-decoration:none; font-size:14px; opacity:.95; }
+.nav-link:hover{ text-decoration:underline; }
+.active-link{ text-decoration:underline; font-weight:700; }
+
+.profile-circle{
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #ffffff33;
+  object-fit: cover;
+}
+
+/* Layout */
+.sc-layout{
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 72px);
+}
+
+/* Sidebar */
+.sc-sidebar{
+  background:#f5faf6;
+  border-right:1px solid #d0e0d3;
+  padding:16px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.btn-pill{
+  width:100%;
+  border:none;
+  background:#1f7a34;
+  color:#fff;
+  padding:10px 12px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:13px;
+}
+.btn-pill:hover{ background:#19642a; }
+
+.side-card{
+  background:#fff;
+  border:1px solid #e2efe4;
+  border-radius:12px;
+  padding:12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.side-title{ font-weight:700; margin-bottom:8px; font-size:13px; }
+.side-text{ font-size:12px; line-height:1.5; color:#2a2a2a; }
+.side-text.small{ margin-top:8px; font-size:11px; color:#666; }
+
+.quick-list{ display:flex; flex-direction:column; gap:8px; }
+.quick-item{
+  width:100%;
+  text-align:left;
+  border:none;
+  background:#f7faf7;
+  border-radius:10px;
+  padding:10px 10px;
+  cursor:pointer;
+  font-size:12px;
+}
+.quick-item:hover{ background:#e3f2e5; }
+
+/* Main */
+.sc-main{
+  padding:18px 20px 28px;
+}
+
+/* Card */
+.card{
+  background:#fff;
+  border:1px solid #e2efe4;
+  border-radius:14px;
+  padding:16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  margin-bottom:14px;
+}
+
+.card-title{
+  font-weight:800;
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+/* Form */
+.form-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap:12px 14px;
+}
+
+.field label{
+  display:block;
+  font-size:12px;
+  margin-bottom:6px;
+  color:#2f2f2f;
+  font-weight:700;
+}
+
+.field input, .field select{
+  width:100%;
+  border:1px solid #c9d5c9;
+  border-radius:10px;
+  padding:10px 10px;
+  font-size:13px;
+  outline:none;
+  background:#f9fcf9;
+}
+
+.inline{
+  display:grid;
+  grid-template-columns: 1fr 110px;
+  gap:10px;
+}
+
+.actions{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+}
+
+.btn-primary{
+  border:none;
+  background:#1f7a34;
+  color:#fff;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:13px;
+}
+.btn-primary:hover{ background:#19642a; }
+
+.btn-outline{
+  border:1px solid #1f7a34;
+  background:#fff;
+  color:#1f7a34;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:13px;
+}
+.btn-outline:hover{ background:#f1faf2; }
+
+/* KPI */
+.kpi-row{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.kpi{
+  background:#fff;
+  border:1px solid #e2efe4;
+  border-radius:14px;
+  padding:14px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.kpi-label{ font-size:12px; color:#666; font-weight:700; }
+.kpi-value{ font-size:22px; font-weight:900; margin-top:6px; color:#1f7a34; }
+.kpi-sub{ font-size:11px; color:#777; margin-top:4px; }
+
+/* Output */
+.meta{
+  font-size:12px;
+  color:#444;
+  margin-bottom:12px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:#f4fbf5;
+  border:1px dashed #cfe6d3;
+}
+
+.plan-grid{
+  display:grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.plan-box{
+  border:1px solid #e2efe4;
+  border-radius:14px;
+  padding:12px;
+  background:#fcfffc;
+}
+
+.plan-title{
+  font-weight:800;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.plan-list{
+  padding-left:18px;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.cost-lines{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-size:12px;
+}
+.cost-line, .cost-total{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 10px;
+  border-radius:10px;
+  background:#f7fbf7;
+  border:1px solid #e9f3ea;
+}
+.cost-total{
+  font-weight:900;
+  background:#eff9f1;
+}
+
+.alerts{
+  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid #ffe0d6;
+  background:#fff6f2;
+}
+
+.alert-title{
+  font-weight:900;
+  font-size:13px;
+  margin-bottom:6px;
+  color:#7a2d1f;
+}
+
+.alert-list{
+  padding-left:18px;
+  font-size:12px;
+  line-height:1.6;
+  color:#5c2b22;
+}
+
+.note{
+  margin-top:12px;
+  font-size:12px;
+  color:#355;
+  background:#f4fbf5;
+  border:1px solid #d7efdd;
+  padding:10px 12px;
+  border-radius:12px;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .sc-layout{ grid-template-columns: 1fr; }
+  .form-grid{ grid-template-columns: 1fr; }
+  .kpi-row{ grid-template-columns: 1fr; }
+  .plan-grid{ grid-template-columns: 1fr; }
+}
+

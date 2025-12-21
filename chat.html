@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KrishiBoT – Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="chat-page">
+
+<!-- ================= TOP BAR ================= -->
+<header class="top-bar">
+
+    <div class="brand-box">
+        <img src="assets/botlogo.png" alt="KrishiBoT logo" class="brand-logo">
+        <div>
+            <div class="brand-text-main">AI Farming Assistant – KrishiBoT</div>
+            <div class="brand-text-sub">Ask in Bangla or English about crops</div>
+        </div>
+    </div>
+
+    <!-- CLEAN RIGHT NAV -->
+    <div class="topbar-right">
+
+        <!-- Primary tools -->
+        <div class="nav-group">
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+            <a href="supply_chain.html" class="nav-link">Supply Chain</a>
+        </div>
+
+        <span class="nav-divider"></span>
+
+        <!-- User actions -->
+        <div class="nav-group">
+            <a href="settings.html" class="nav-link">Settings</a>
+            <a href="profile.html" class="nav-link">Profile</a>
+            <img src="assets/farmer.png" class="profile-circle" alt="Profile">
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ================= CHAT LAYOUT ================= -->
+<div class="chat-layout">
+
+    <!-- ========== LEFT SIDEBAR ========== -->
+    <aside class="chat-sidebar">
+
+        <div class="sidebar-header">Chats</div>
+
+        <button class="new-chat-btn" id="newChatBtn" type="button">
+            + New Chat
+        </button>
+
+        <!-- Suggested Questions -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Suggested Questions</div>
+
+            <div id="suggestList">
+                <button class="suggest-item" type="button"
+                        data-question="Which crop is best for my land and season?">
+                    🌾 Which crop is best for my land and season?
+                </button>
+
+                <button class="suggest-item" type="button"
+                        data-question="How does temperature affect crop growth?">
+                    🌤 How does temperature affect crop growth?
+                </button>
+
+                <button class="suggest-item" type="button"
+                        data-question="How much water does my crop need?">
+                    💧 How much water does my crop need?
+                </button>
+
+                <button class="suggest-item" type="button"
+                        data-question="What fertilizer should I use?">
+                    🧪 What fertilizer should I use?
+                </button>
+
+                <button class="suggest-item" type="button"
+                        data-question="আমার জমি ও মৌসুমের জন্য কোন ফসল ভালো হবে?">
+                    🌾 আমার জমি ও মৌসুমের জন্য কোন ফসল ভালো হবে?
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat History -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">History</div>
+            <div id="historyList" class="history-list">
+                <!-- JS renders here -->
+            </div>
+        </div>
+
+    </aside>
+
+    <!-- ========== MAIN CHAT AREA ========== -->
+    <main class="chat-main">
+
+        <!-- Empty State -->
+        <div id="chatEmptyState" class="chat-empty">
+            <div class="chat-empty-icon">💬</div>
+            <div class="chat-empty-text">
+                Start a new conversation about crops in বাংলা or English.
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="chat-wrapper" id="chatWrapper"></div>
+
+        <!-- Input Bar -->
+        <div class="chat-input-bar">
+            <div class="chat-input-inner">
+
+                <button class="chat-icon-btn" id="menuBtn" title="Menu">☰</button>
+
+                <textarea id="chatInput" rows="1"
+                          placeholder="Type your question in বাংলা or English…"></textarea>
+
+                <button class="chat-icon-btn" id="scrollBtn" title="Scroll">⬇</button>
+                <button class="chat-icon-btn" id="micBtn" title="Voice (prototype)">🎤</button>
+                <button class="chat-icon-btn" id="sendBtn" title="Send">➤</button>
+
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

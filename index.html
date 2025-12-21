@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KrishiBoT – Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- TOP GREEN BAR WITH LOGO -->
+    <div class="top-bar">
+        <div class="brand-box">
+            <img src="assets/botlogo.png" alt="KrishiBoT logo" class="brand-logo">
+
+            <div>
+                <div class="brand-text-main">AI Farming Assistant – KrishiBoT</div>
+                <div class="brand-text-sub">AI-Based Crop Advisory System for Farmers</div>
+            </div>
+        </div>
+
+        <div class="top-right">
+            <a href="admin_login.html" class="nav-link">
+                <span style="margin-right:20px;">Admin_Login</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- CENTER LOGIN CARD -->
+    <div class="page-center">
+        <div class="auth-card">
+            <div class="auth-title">Farmer Login</div>
+            <div class="auth-subtitle">
+                Get crop advice in Bangla & English based on your land, season and location.
+            </div>
+
+            <label class="auth-label">Mobile Number</label>
+            <input type="text" id="farmerPhone" class="auth-input" placeholder="+8801XXXXXXXXX">
+
+            <label class="auth-label">Password</label>
+            <input type="password" id="farmerPassword" class="auth-input" placeholder="********">
+
+            <div class="auth-row">
+                <div class="checkbox-inline">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <div style="font-size:11px;color:#1f7a34;cursor:pointer;">
+                    Forgot password?
+                </div>
+            </div>
+
+            <!-- FINAL FIXED BUTTONS -->
+            <button class="auth-btn" id="farmerLoginBtn">
+                Login
+            </button>
+
+            <button class="auth-btn secondary" id="createAccountBtn">
+                Create New Account
+            </button>
+
+            <div class="auth-small-text">
+                You can ask questions in বাংলা or English. Voice support will be added in the next step.
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>
